@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+docker stop server
+
+docker run -d --rm \
+    -e PORT=80 \
+    -p 80:80 \
+    -w /usr/src/app \
+    --name server \
+    --volume $PWD:/usr/src/app \
+    node:lts-alpine \
+    node ./bin/www
+
+docker logs -f server

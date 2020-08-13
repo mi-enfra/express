@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+docker run --interactive --rm \
+    -p 80:80 \
+    -p 3000:3000 \
+    -w /usr/src/app \
+    --name npm \
+    --volume $PWD:/usr/src/app \
+    node:lts-alpine \
+    npm $@
